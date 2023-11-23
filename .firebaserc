@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "text-me-unique": {
+      "hosting": {
+        "getstream-chat-angular-example": [
+          "text-me-unique"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "text-me-unique"
+  }
+}
