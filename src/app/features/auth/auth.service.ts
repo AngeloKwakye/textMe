@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth, authState, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
-import { SignupCredentials } from './auth.model';
+import { SigninCredentials, SignupCredentials } from './auth.model';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
 
 @Injectable({
@@ -15,13 +15,19 @@ export class AuthService {
 
   constructor(private auth: Auth) { }
 
-  signIn(credentials: Object) {
-    this.authState.next(credentials)
+  signIn({email, password}: SigninCredentials) {
+    return from(signInWithEmailAndPassword(this.auth, email, password))
+
   }
+
 
   signUp({email, password, displayName}: SignupCredentials) {
    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
       switchMap(({ user }) => updateProfile(user, { displayName }))
     );
+  }
+
+  signOut() {
+    return from(this.auth.signOut())
   }
 }
