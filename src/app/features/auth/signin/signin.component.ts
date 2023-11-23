@@ -30,7 +30,9 @@ export class SigninComponent implements OnInit {
     // console.log('signin with: ', this.form);
     this.auth.signIn(this.form.value).subscribe({
       next: () => this.router.navigate(['chat']),
-      error: (error: any) => this.snackbar.open(error.message),
+      error: (error: any) => this.snackbar.open(error.message, 'Close',{
+        duration: 4000
+      }),
     });
   }
 }
