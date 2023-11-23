@@ -26,7 +26,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     MatButtonModule,
     ChatModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
   ],
   providers: [
     {
