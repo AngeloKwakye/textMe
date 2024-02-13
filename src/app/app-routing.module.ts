@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './features/auth/signin/signin.component';
 import { SignupComponent } from './features/auth/signup/signup.component';
-import { AuthGuard, redirectLoggedInTo, canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
+import { redirectLoggedInTo, canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 const routes: Routes = [
   { path: '', redirectTo: 'chat', pathMatch: 'full'},
   { path: 'signin', component: SigninComponent, ...canActivate(() => redirectLoggedInTo(['chat']))},
